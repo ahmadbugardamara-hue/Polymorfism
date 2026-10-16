@@ -7,11 +7,33 @@ namespace GamePolymorphism
         public static void Main(string[] args)
         {
             Hero h = new Hero();
-            h = new Knight();  // polimorfisme
-            h = new Wizard();  // polimorfisme
+            h = new Knight();
+            h = new Wizard();
 
-            // Knight k = new Wizard(); 
-            // ERROR: tidak bisa karena Wizard bukan subclass Knight
+            Knight k = new Knight();
+            k.baseDamage = 100;
+            k.name = "Arthur";
+            k.bonusArmor = 50;
+
+            h = k;
+            h.UseSkill();
+
+            k.UseSkill();
+
+            Hero[] arrHero = new Hero[3];
+
+            Knight kn = new Knight();
+            kn.name = "Lancelot";
+            kn.baseDamage = 120;
+            kn.bonusArmor = 80;
+
+            arrHero[0] = h;
+            arrHero[1] = k;
+            arrHero[2] = new Wizard();
+
+            arrHero[0].UseSkill();
+            arrHero[1].UseSkill();
+            arrHero[2].UseSkill();
         }
     }
 }
